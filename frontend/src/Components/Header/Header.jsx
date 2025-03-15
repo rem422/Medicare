@@ -1,9 +1,8 @@
-import {useEffect, useRef} from 'react'
+import {useState} from 'react'
 import Logo from '../../assets/images/logo.png'
 import UserImg from '../../assets/images/avatar-icon.png'
 import { NavLink, Link } from'react-router-dom'
-import { BiMenu } from 'react-icons/bi'
-import { IoMdClose } from "react-icons/io";
+import { FiMenu, FiX} from "react-icons/fi";
 
 const navLinks = [
   {
@@ -26,34 +25,15 @@ const navLinks = [
 
 const Header = () => {
 
-  const headerRef = useRef(null);
-  const menuRef = useRef(null);
+const [toggle, setToggle] = useState(false);
 
-  const handleStickyHeader = () => {
-    window.addEventListener('scroll', () => {
-      if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('sticky__header');
-      } else {
-        headerRef.current.classList.remove('sticky__header');
-      }
-    })
-  }
-
-  useEffect(() => {
-    handleStickyHeader();
-    return () => window.removeEventListener('scroll', handleStickyHeader);
-  }, []);
-
-  // const [toggle, setToggle] = useState(false);
-
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
-  // const toggledMenu = () => {
-  //   setToggle(!toggle);
-  // };
+const handleToggle = () => {
+  setToggle(!toggle);
+}
 
 
   return (
-    <header className='header flex items-center' ref={headerRef}>
+    <header className='header flex items-center'>
       <div className="container">
         <div className='flex items-center justify-between'>
           {/*================== Logo ==================*/}
@@ -61,7 +41,7 @@ const Header = () => {
             <img src={Logo} alt='Medicare Logo' className='logo' />
           </div>
           {/*================== Navbar Menu ==================*/}
-          <div className='navigation' ref={menuRef} onClick={toggleMenu}>
+          <div className='navigation' >
             <ul className='menu flex items-center gap-[2.7rem]'>
               {
                 navLinks.map((link, index) => (
@@ -93,9 +73,8 @@ const Header = () => {
             <Link to='/login'>
                 <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-md'>Login</button>
             </Link>
-            <span className='md:hidden' onClick={toggleMenu}>
-              {/* {!toggle ? <IoMdClose className='w-6 h-6 text-primaryColor' /> : <BiMenu className='w-6 h-6 text-primaryColor' /> } */}
-              <BiMenu className='w-6 h-6 cursor-pointer'/>
+            <span className='md:hidden' onClick={handleToggle}>
+              {toggle ? <FiX className='w-6 h-6 ' /> : <FiMenu className='w-6 h-6' /> }
             </span>
           </div>
         </div>
