@@ -87,7 +87,7 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
               </Link>
             </div>
             <Link to='/login'>
-                <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-md'>Login</button>
+                <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-full'>Login</button>
             </Link>
             <span className='md:hidden' onClick={toggleMenu}>
               <BiMenu className='w-7 h-7 ' />
