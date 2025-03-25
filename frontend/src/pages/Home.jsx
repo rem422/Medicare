@@ -50,7 +50,17 @@ const Home = () => {
       </div>
     </section>
     {/*========== Hero section end ==========*/}
-    <section></section>
+    <section>
+      <div className="container">
+        <div className='lg:w-[470px] mx-auto'>
+          <h2 className='heading text-center'>Providing the best nedical services</h2>
+          <p className='text__para text-center'>World-class care for everyone. Our health system offers unmatched.</p>
+        </div>
+        <div className='flex flex-wrap items-center justify-between flex-col md:flex-row gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]'>
+
+        </div>
+      </div>
+    </section>
     </>
   )
 }
